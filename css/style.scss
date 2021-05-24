@@ -1,0 +1,90 @@
+$bg-color: #023047;
+$font-color: #ffb703;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+nav {
+    height: 80px;
+    background-color: $bg-color;
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: "logo menu";
+    align-items: center;
+    padding: 0 20px;
+
+    h1 {
+        grid-area: logo;
+        color:  $font-color;
+    }
+
+    ul {
+        grid-area: menu;
+        list-style: none;
+        justify-self: end;
+
+        li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: $font-color;
+        }
+
+    }
+
+    input, label {
+        display: none;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    nav {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 80px 1fr;
+        height: auto;
+
+        grid-template-areas: "logo hamburger" "all lista";
+        
+        label {
+            display: block;
+            font-size: 30px;
+            justify-self: end;
+            color: $font-color;
+        }
+
+        ul {
+            display: none;  
+        }
+
+        #open-menu:checked  + ul {
+            display: flex;
+            flex-direction: column;
+            grid-area: lista;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            width: 100%;
+        }
+
+        li {
+            display: block;
+            font-size: 30px;
+        }
+    }
+}
